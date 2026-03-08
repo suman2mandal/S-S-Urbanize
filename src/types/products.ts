@@ -4,5 +4,5 @@ export type Product = {
   slug: string;
   price: number;
   description: string;
-  image?: string;
+  image: string;
 };

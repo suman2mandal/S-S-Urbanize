@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-12 items-center">
@@ -23,7 +25,17 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="h-96 bg-neutral-200 rounded-2xl" />
+      {/* <div className="h-96 bg-neutral-200 rounded-2xl" /> */}
+
+      <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+      <Image
+        src="/images/hero-placeholder.png"
+        alt="SS Urbanize modern essentials"
+        fill
+        priority
+        className="object-cover"
+      />
+      </div>
     </section>
   );
 }

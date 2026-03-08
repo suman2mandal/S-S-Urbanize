@@ -2,6 +2,7 @@ import Container from "@/components/ui/Container";
 import AddToCartButton from "@/components/cart/AddToCartButton";
 import { products } from "@/data/products";
 import { Product } from "@/types/products";
+import Image from "next/image";
 
 export default async function ProductPage({
   params,
@@ -26,7 +27,15 @@ export default async function ProductPage({
     <section className="py-24">
       <Container>
         <div className="grid md:grid-cols-2 gap-16">
-          <div className="h-96 bg-neutral-200 rounded-xl" />
+          <div className="relative h-96 rounded-xl overflow-hidden">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
 
           <div>
             <h1 className="text-4xl font-semibold">

@@ -1,8 +1,19 @@
+import Image from "next/image";
+
 export default function Categories() {
   const categories = [
-    { name: "Home Essentials" },
-    { name: "Daily Utility" },
-    { name: "Lifestyle Products" },
+    {
+      name: "Home Essentials",
+      image: "/images/categories/home.png",
+    },
+    {
+      name: "Daily Utility",
+      image: "/images/categories/daily.png",
+    },
+    {
+      name: "Lifestyle Products",
+      image: "/images/categories/lifestyle.png",
+    },
   ];
 
   return (
@@ -16,9 +27,25 @@ export default function Categories() {
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="h-64 bg-white border border-neutral-200 rounded-xl flex items-end p-6 hover:shadow-lg transition"
+              className="relative h-64 rounded-xl overflow-hidden group cursor-pointer"
             >
-              <h3 className="text-lg font-medium">{cat.name}</h3>
+              {/* Image */}
+              <Image
+                src={cat.image}
+                alt={cat.name}
+                fill
+                className="object-cover group-hover:scale-105 transition duration-500"
+              />
+
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
+
+              {/* Text */}
+              <div className="absolute bottom-6 left-6">
+                <h3 className="text-white text-xl font-semibold">
+                  {cat.name}
+                </h3>
+              </div>
             </div>
           ))}
         </div>

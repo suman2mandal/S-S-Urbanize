@@ -1,26 +1,35 @@
-// ProductCard component
+import Image from "next/image";
 import Link from "next/link";
-import Button from "./Button";
+import { Product } from "@/types/products";
 
-export default function ProductCard({
-  product,
-}: {
-  product: any;
-}) {
+type ProductCardProps = {
+  product: Product;
+};
+
+export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="border border-neutral-200 rounded-xl p-6 hover:shadow-lg transition">
-      <div className="h-52 bg-neutral-200 rounded-md mb-4" />
+    <Link href={`/product/${product.slug}`}>
+      <div className="bg-white rounded-xl border border-neutral-200 overflow-hidden hover:shadow-lg transition cursor-pointer">
+        
+        <div className="relative h-60">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        </div>
 
-      <h3 className="font-medium">{product.name}</h3>
-      <p className="text-sm text-neutral-600 mt-2">
-        ₹{product.price}
-      </p>
+        <div className="p-6">
+          <h3 className="font-medium text-lg">
+            {product.name}
+          </h3>
 
-      <Link href={`/product/${product.slug}`}>
-        <Button className="mt-4 w-full">
-          View Product
-        </Button>
-      </Link>
-    </div>
+          <p className="mt-2 text-neutral-600">
+            ₹{product.price}
+          </p>
+        </div>
+      </div>
+    </Link>
   );
 }
